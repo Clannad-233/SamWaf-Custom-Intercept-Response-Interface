@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请求过于频繁 (429)</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #f0ad4e;
+            margin: 0;
+        }
+        h3 {
+            font-size: 1.5em;
+            color: #5bc0de;
+            margin: 20px 0;
+        }
+        .message {
+            font-size: 1.1em;
+            color: #999;
+            margin-bottom: 30px;
+        }
+        .countdown {
+            font-size: 1.2em;
+            color: #d9534f;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .back-btn {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 30px; }
+            h1 { font-size: 2em; }
+            h3 { font-size: 1.3em; }
+            .message { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>请求过于频繁</h1>
+        <p class="message">您的请求频率过高，已被暂时限制。<br>请稍等片刻后重试。</p>
+        <div class="countdown" id="countdown">30秒后自动刷新</div>
+        <h3>错误代码：429</h3>
+        <h3>请求ID：[[.SAMWAF_REQ_UUID]]</h3>
+        <button class="back-btn" onclick="window.location.reload()">立即重试</button>
+    </div>
+    
+    <script>
+        let timeLeft = 30;
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = `${timeLeft}秒后自动刷新`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.reload();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

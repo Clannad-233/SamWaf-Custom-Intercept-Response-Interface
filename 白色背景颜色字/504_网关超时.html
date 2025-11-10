@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网关超时 (504)</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #f0ad4e;
+            margin: 0;
+        }
+        h3 {
+            font-size: 1.5em;
+            color: #5bc0de;
+            margin: 20px 0;
+        }
+        .message {
+            font-size: 1.1em;
+            color: #999;
+            margin-bottom: 30px;
+        }
+        .timeout {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        .retry-btn {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .home-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 5px;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 30px; }
+            h1 { font-size: 2em; }
+            h3 { font-size: 1.3em; }
+            .message { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>网关超时</h1>
+        <div class="timeout">
+            <strong>超时提示：</strong>上游服务器响应超时，请求无法在指定时间内完成。
+        </div>
+        <p class="message">服务器正在处理您的请求，但响应时间过长。<br>请稍后重试。</p>
+        <h3>错误代码：504</h3>
+        <h3>请求ID：[[.SAMWAF_REQ_UUID]]</h3>
+        <button class="retry-btn" onclick="window.location.reload()">重新尝试</button>
+        <button class="home-btn" onclick="window.location.href='/'">返回首页</button>
+    </div>
+</body>
+</html>
